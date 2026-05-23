@@ -41,36 +41,36 @@ const App = () => {
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
 
   return (
-    <div className={`min-h-screen w-full overflow-x-hidden transition-colors duration-500 ${theme === 'dark' ? 'bg-zinc-950 text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <div className={`min-h-screen w-full overflow-x-hidden transition-colors duration-500 ${theme === 'dark' ? 'bg-zinc-950 text-zinc-100' : 'bg-[#f5f5f7] text-zinc-900'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       {/* Subtle Background Blobs (Premium Touch) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] mix-blend-soft-light transition-colors duration-1000 ${theme === 'dark' ? 'bg-red-900/10' : 'bg-red-200/20'}`} />
-        <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] mix-blend-soft-light transition-colors duration-1000 ${theme === 'dark' ? 'bg-zinc-800/20' : 'bg-zinc-200/30'}`} />
+        <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] mix-blend-soft-light transition-colors duration-1000 ${theme === 'dark' ? 'bg-zinc-800/10' : 'bg-zinc-200/40'}`} />
+        <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] mix-blend-soft-light transition-colors duration-1000 ${theme === 'dark' ? 'bg-zinc-800/20' : 'bg-zinc-300/30'}`} />
       </div>
 
       {/* Navbar */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? (theme === 'dark' ? 'bg-zinc-950/90 backdrop-blur-md py-3' : 'bg-white/90 backdrop-blur-md py-3 shadow-md') : 'bg-transparent py-5'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? (theme === 'dark' ? 'bg-zinc-950/90 backdrop-blur-md py-3 border-b border-white/5' : 'bg-white/80 backdrop-blur-md py-3 shadow-sm border-b border-zinc-200/50') : 'bg-transparent py-5'}`}>
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-red-600/20">
-              <Wrench size={24} />
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-500 shadow-sm ${theme === 'dark' ? 'bg-zinc-100 text-zinc-950' : 'bg-zinc-950 text-zinc-100'}`}>
+              <Wrench size={22} />
             </div>
             <span className="text-xl sm:text-2xl font-bold tracking-tighter">{t.common.logo}</span>
           </motion.div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <button onClick={toggleLang} className="p-2 rounded-full hover:bg-zinc-500/10 transition-colors flex items-center gap-1.5">
+            <button onClick={toggleLang} className="p-2 rounded-full hover:bg-zinc-500/10 transition-colors flex items-center gap-1.5 grayscale opacity-70 hover:opacity-100">
               <Languages size={18} />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">{lang === 'en' ? 'AR' : 'EN'}</span>
             </button>
-            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-zinc-500/10 transition-colors">
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-zinc-500/10 transition-colors opacity-70 hover:opacity-100">
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <a href="https://wa.me/971554661718" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all shadow-lg shadow-red-600/20 font-bold text-sm">
+            <a href="https://wa.me/971554661718" target="_blank" rel="noreferrer" className={`flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 rounded-full transition-all font-bold text-sm shadow-sm ${theme === 'dark' ? 'bg-zinc-100 text-zinc-950 hover:bg-white' : 'bg-zinc-900 text-zinc-100 hover:bg-black'}`}>
               <Phone size={16} className="shrink-0" />
               <span className="hidden sm:inline">{t.hero.cta}</span>
             </a>
@@ -103,7 +103,7 @@ const App = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="inline-block px-4 py-1 rounded-full bg-red-600/10 border border-red-600/20 text-red-600 text-xs sm:text-sm font-bold tracking-widest uppercase mb-6"
+              className={`inline-block px-4 py-1 rounded-full border text-xs sm:text-sm font-bold tracking-widest uppercase mb-6 transition-colors duration-500 ${theme === 'dark' ? 'bg-zinc-800/50 border-zinc-700 text-zinc-300' : 'bg-zinc-200/50 border-zinc-300 text-zinc-600'}`}
             >
               {t.hero.badge}
             </motion.span>
@@ -119,7 +119,7 @@ const App = () => {
                 target="_blank"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3 shadow-2xl shadow-red-600/30 transition-all cursor-pointer w-full sm:w-auto"
+                className={`px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all cursor-pointer w-full sm:w-auto shadow-sm ${theme === 'dark' ? 'bg-zinc-100 text-zinc-950 hover:bg-white' : 'bg-zinc-900 text-white hover:bg-black'}`}
               >
                 <MessageCircle size={22} />
                 {t.hero.cta}
@@ -148,14 +148,14 @@ const App = () => {
         </section>
 
         {/* Value Strip */}
-      <section className={`py-12 border-y ${theme === 'dark' ? 'border-zinc-900 bg-zinc-950' : 'border-zinc-200 bg-white'}`}>
+      <section className={`py-12 border-y ${theme === 'dark' ? 'border-zinc-900 bg-zinc-950' : 'border-zinc-200/60 bg-white/50'}`}>
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4">
             {[
-              { label: t.values.quality, icon: <ShieldCheck className="text-red-600 shrink-0" size={20} /> },
-              { label: t.values.expert, icon: <ShieldCheck className="text-red-600 shrink-0" size={20} /> },
-              { label: t.values.fast, icon: <ShieldCheck className="text-red-600 shrink-0" size={20} /> },
-              { label: t.values.fair, icon: <ShieldCheck className="text-red-600 shrink-0" size={20} /> },
+              { label: t.values.quality, icon: <ShieldCheck className="text-zinc-900 dark:text-zinc-100 shrink-0" size={20} /> },
+              { label: t.values.expert, icon: <ShieldCheck className="text-zinc-900 dark:text-zinc-100 shrink-0" size={20} /> },
+              { label: t.values.fast, icon: <ShieldCheck className="text-zinc-900 dark:text-zinc-100 shrink-0" size={20} /> },
+              { label: t.values.fair, icon: <ShieldCheck className="text-zinc-900 dark:text-zinc-100 shrink-0" size={20} /> },
             ].map((v, i) => (
               <motion.div 
                 key={i}
@@ -206,7 +206,7 @@ const App = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{t.services.title}</h2>
-              <div className="h-1.5 w-20 bg-red-600 rounded-full" />
+              <div className={`h-1.5 w-20 rounded-full ${theme === 'dark' ? 'bg-zinc-100' : 'bg-zinc-950'}`} />
             </div>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-md text-sm sm:text-base">
               {t.services.subtitle}
@@ -302,7 +302,7 @@ const App = () => {
                 </motion.div>
               </div>
 
-              <div className="absolute -bottom-6 -right-6 sm:-bottom-10 sm:-right-10 w-32 h-32 sm:w-48 sm:h-48 bg-red-600 rounded-2xl sm:rounded-3xl p-4 sm:p-8 flex flex-col justify-end text-white shadow-2xl z-20">
+              <div className={`absolute -bottom-6 -right-6 sm:-bottom-10 sm:-right-10 w-32 h-32 sm:w-48 sm:h-48 rounded-2xl sm:rounded-3xl p-4 sm:p-8 flex flex-col justify-end shadow-2xl z-20 ${theme === 'dark' ? 'bg-zinc-100 text-zinc-950' : 'bg-zinc-950 text-zinc-100'}`}>
                 <span className="text-2xl sm:text-4xl font-bold">{t.common.years}</span>
                 <span className="text-[10px] sm:text-sm font-bold uppercase tracking-tighter opacity-90 leading-tight">{t.common.yearsExperience}</span>
               </div>
@@ -314,7 +314,7 @@ const App = () => {
                viewport={{ once: true }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">{t.about.title}</h2>
-              <h3 className="text-lg sm:text-xl text-red-600 font-bold mb-6 sm:mb-8">{t.about.owner}</h3>
+              <h3 className={`text-lg sm:text-xl font-bold mb-6 sm:mb-8 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600'}`}>{t.about.owner}</h3>
               <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
                 {t.about.desc}
               </p>
@@ -322,7 +322,7 @@ const App = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 {t.about.features.map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center text-red-600 shrink-0">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${theme === 'dark' ? 'bg-zinc-800 text-zinc-100' : 'bg-zinc-200 text-zinc-900'}`}>
                       <ShieldCheck size={14} />
                     </div>
                     <span className="font-bold text-sm text-zinc-700 dark:text-zinc-300">{item}</span>
@@ -334,7 +334,7 @@ const App = () => {
                 href="https://wa.me/971554661718"
                 target="_blank"
                 whileHover={{ x: 5 }}
-                className="inline-flex items-center gap-2 text-base sm:text-lg font-bold border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors"
+                className={`inline-flex items-center gap-2 text-base sm:text-lg font-bold border-b-2 pb-1 transition-colors ${theme === 'dark' ? 'border-zinc-100' : 'border-zinc-950'}`}
               >
                 {t.about.learnMore}
                 <Phone size={18} />
@@ -350,12 +350,12 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
               <div className="text-2xl font-bold tracking-tighter flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-red-600/10">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-colors duration-500 ${theme === 'dark' ? 'bg-zinc-800 text-zinc-100' : 'bg-zinc-100 text-zinc-950 shadow-white/10'}`}>
                   <Wrench size={22} />
                 </div>
                 <span>{t.common.logoFull}</span>
               </div>
-              <p className="text-zinc-500 max-w-sm mb-8">
+              <p className="text-zinc-500 max-w-sm mb-8 leading-relaxed">
                 {t.footer.description}
               </p>
               <div className="flex gap-4">
@@ -403,8 +403,8 @@ const ServiceCard = ({ icon, title, desc, image, theme }: { icon: React.ReactNod
     <div className="h-48 overflow-hidden relative">
       <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-      <div className="absolute bottom-4 left-6 text-white text-red-600">
-        <div className="bg-zinc-950 p-3 rounded-2xl shadow-xl">
+      <div className="absolute bottom-4 left-6 text-white">
+        <div className={`p-3 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-zinc-100 text-zinc-950' : 'bg-zinc-950 text-zinc-100'}`}>
           {icon}
         </div>
       </div>
@@ -423,7 +423,7 @@ const SocialLink = ({ icon, href }: { icon: React.ReactNode, href: string }) => 
     href={href} 
     target="_blank" 
     rel="noreferrer"
-    className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-red-600 hover:bg-zinc-800 transition-all shadow-xl shadow-black/20"
+    className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-all shadow-xl shadow-black/20"
   >
     {icon}
   </a>
