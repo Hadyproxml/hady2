@@ -174,7 +174,7 @@ const App = () => {
       </section>
 
       {/* Brand Marquee */}
-      <div className={`py-8 overflow-hidden border-b ${theme === 'dark' ? 'bg-zinc-900/30 border-zinc-900' : 'bg-zinc-50 border-zinc-200'}`}>
+      <div className={`py-8 overflow-hidden border-b ${theme === 'dark' ? 'bg-zinc-900/30 border-zinc-900' : 'bg-zinc-50 border-zinc-200'}`} dir="ltr">
         <motion.div 
           className="flex whitespace-nowrap"
           animate={{ x: [0, -1000] }}
@@ -249,7 +249,7 @@ const App = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="h-[300px] sm:h-[400px] md:h-[500px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl relative bg-zinc-900/5 flex items-center">
+              <div className="h-[300px] sm:h-[400px] md:h-[500px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl relative bg-zinc-900/5 flex items-center" dir="ltr">
                 <motion.div 
                   className="flex h-full items-center"
                   animate={{ x: [0, "-50%"] }}
