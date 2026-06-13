@@ -110,7 +110,7 @@ export interface UserAccount {
 export const DEFAULT_ADMIN: UserAccount = {
   id: 'admin_1',
   username: 'admin',
-  password: 'password',
+  password: '123',
   fullName: 'مدير النظام',
   role: 'MANAGER',
   permissions: {
