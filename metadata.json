@@ -1,0 +1,6 @@
+{
+  "name": "نظام المستشفى البيطري - Veterinary Hospital",
+  "description": "Veterinary hospital management system starting with patient and pet registration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

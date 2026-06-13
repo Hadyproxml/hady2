@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  @media print {
+    @page {
+      size: portrait;
+      margin: 0 !important; /* Removes default browser headers/footers (contains page titles, dates, page numbers, and website URLs) */
+    }
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body * {
+      visibility: hidden;
+    }
+    #printable-invoice, #printable-invoice * {
+      visibility: visible;
+    }
+    #printable-invoice {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100% !important;
+      height: 297mm !important; /* Standard A4 height is exactly 297mm */
+      max-height: 297mm !important;
+      box-sizing: border-box !important;
+      padding: 15mm 15mm 10mm 15mm !important; /* Safe margins simulating elegant physical paper borders */
+      page-break-after: avoid !important;
+      page-break-before: avoid !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      overflow: hidden !important;
+    }
+    /* Compact spacing rules exclusively for printing to enforce fitting within one sheet */
+    #printable-invoice .p-8, #printable-invoice .p-10 {
+      padding: 0.75rem !important;
+    }
+    #printable-invoice .pb-6 {
+      padding-bottom: 0.75rem !important;
+    }
+    #printable-invoice .mb-8 {
+      margin-bottom: 0.75rem !important;
+    }
+    #printable-invoice .mb-4 {
+      margin-bottom: 0.5rem !important;
+    }
+    #printable-invoice .p-5, #printable-invoice .p-6 {
+      padding: 0.75rem !important;
+    }
+    #printable-invoice .py-2.5 {
+      padding-top: 0.35rem !important;
+      padding-bottom: 0.35rem !important;
+    }
+    #printable-invoice .mt-12 {
+      margin-top: 1rem !important;
+    }
+    #printable-invoice .pt-6 {
+      padding-top: 0.75rem !important;
+    }
+    #printable-invoice .mt-6 {
+      margin-top: 0.75rem !important;
+    }
+    #printable-invoice .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 0.5rem !important;
+    }
+  }
+}
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
