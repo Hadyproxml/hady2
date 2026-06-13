@@ -82,10 +82,12 @@ export default function App() {
     return localStorage.getItem('vita_hospital_name') || 'عيادات هادي';
   });
   const [hospitalAddress, setHospitalAddress] = useState(() => {
-    return localStorage.getItem('vita_hospital_address') || 'شارع الملك فهد، حي الياسمين، الرياض';
+    const saved = localStorage.getItem('vita_hospital_address');
+    return (!saved || saved === 'شارع الملك فهد، حي الياسمين، الرياض') ? 'سموحه-الاسكندريه' : saved;
   });
   const [hospitalPhone, setHospitalPhone] = useState(() => {
-    return localStorage.getItem('vita_hospital_phone') || '+966 50 123 4567';
+    const saved = localStorage.getItem('vita_hospital_phone');
+    return (!saved || saved === '+966 50 123 4567') ? '01017485367' : saved;
   });
 
   useEffect(() => {

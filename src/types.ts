@@ -130,7 +130,7 @@ export const DEVELOPER_ACCOUNT: UserAccount = {
   id: 'dev_1',
   username: 'hadypro',
   password: 'hady@pro2001',
-  fullName: 'مطور النظام',
+  fullName: 'هادي ماهر',
   role: 'MANAGER',
   permissions: {
     canViewRegistration: true,

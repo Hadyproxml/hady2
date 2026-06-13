@@ -462,27 +462,35 @@ export default function SettingsSection({
         <div className="bg-slate-900 p-6 rounded-2xl shadow-inner text-emerald-400 font-mono text-xs animate-in fade-in duration-500">
            <div className="flex items-center gap-3 mb-4 border-b border-slate-800 pb-3">
               <Database size={18} className="text-emerald-500" />
-              <h3 className="text-white font-bold tracking-widest">DEVELOPER CONSOLE</h3>
+              <h3 className="text-white font-bold tracking-widest">DEVELOPER PROFILE & CONSOLE</h3>
            </div>
            <div className="space-y-3">
               <div className="flex gap-4">
+                 <span className="text-emerald-600">DEVELOPER:</span>
+                 <span className="text-slate-200 font-bold">هادي ماهر</span>
+              </div>
+              <div className="flex gap-4">
+                 <span className="text-emerald-600">PHONE:</span>
+                 <span className="text-slate-200">01017485367</span>
+              </div>
+              <div className="flex gap-4">
                  <span className="text-emerald-600">SYST_VER:</span>
                  <span>1.0.8-rev.2</span>
-              </div>
-              <div className="flex gap-4">
-                 <span className="text-emerald-600">DB_PATH:</span>
-                 <span className="text-slate-400">{patientDataPath || '/root/data'}</span>
-              </div>
-              <div className="flex gap-4">
-                 <span className="text-emerald-600">ACTIVE_SESSIONS:</span>
-                 <span>1</span>
-              </div>
-              <div className="pt-3 text-slate-600 border-t border-slate-800 text-[10px]">
-                 // System logs and direct database operations will appear here in future updates.
-              </div>
-           </div>
-        </div>
-      )}
+               </div>
+               <div className="flex gap-4">
+                  <span className="text-emerald-600">DB_PATH:</span>
+                  <span className="text-slate-400">{patientDataPath || '/root/data'}</span>
+               </div>
+               <div className="flex gap-4">
+                  <span className="text-emerald-600">ACTIVE_SESSIONS:</span>
+                  <span>1</span>
+               </div>
+               <div className="pt-3 text-slate-600 border-t border-slate-800 text-[10px]">
+                  // تم تسجيل النظام باسم المطور المعتمد هادي ماهر. كافة الحقوق والخيارات محفوظة.
+               </div>
+            </div>
+         </div>
+       )}
       {/* Delete Confirmation Modal */}
       <DeleteConfirmModal
         isOpen={deleteModal.isOpen}
