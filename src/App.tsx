@@ -19,11 +19,35 @@ type NavigationTab = 'REGISTRATION' | 'DOCTOR' | 'PAYMENT' | 'SERVICES' | 'SEARC
 export default function App() {
   const [userAccounts, setUserAccounts] = useState<UserAccount[]>(() => {
     const saved = localStorage.getItem('vita_user_accounts');
-    return saved ? JSON.parse(saved) : [DEFAULT_ADMIN, DEVELOPER_ACCOUNT];
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as UserAccount[];
+        return parsed.map(acc => {
+          if (acc.username === 'admin' && acc.password === 'password') {
+            return { ...acc, password: '123' };
+          }
+          return acc;
+        });
+      } catch (e) {
+        // Fallback
+      }
+    }
+    return [DEFAULT_ADMIN, DEVELOPER_ACCOUNT];
   });
   const [currentUser, setCurrentUser] = useState<UserAccount | null>(() => {
     const saved = localStorage.getItem('vita_current_user');
-    return saved ? JSON.parse(saved) : null;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as UserAccount;
+        if (parsed.username === 'admin' && parsed.password === 'password') {
+          return { ...parsed, password: '123' };
+        }
+        return parsed;
+      } catch (e) {
+        // Fallback
+      }
+    }
+    return null;
   });
 
   const [activeTab, setActiveTab] = useState<NavigationTab>(() => {
